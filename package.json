@@ -1,0 +1,26 @@
+{
+  "name": "text-project",
+  "description": "Simple API",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "nodemon ./index.js"
+  },
+  "author": "Gustavo cawthon",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
