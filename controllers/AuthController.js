@@ -6,12 +6,13 @@ module.exports = class AuthController{
         const {email, password} = req.body;
         const user = await User.findOne({where: {email: email}});
         if(!user){
-            res.status(404).json({message: "Usuário não encontrado"});
+            return res.status(404).json({message: "Usuário não encontrado"});
+
         }
 
         const passwordMatch = bcrypt.compareSync(password, user.password);
         if(!passwordMatch){
-            res.status(401).json({message: "Senha incorreta"});
+          return  res.status(401).json({message: "Senha incorreta"});
         }
 
         req.session.user = user.id;
@@ -25,7 +26,7 @@ module.exports = class AuthController{
 
     static async register(req, res){
         const {name, email, password} = req.body;
-        const checkIfUserExist = await User.findOne({where: email})
+        const checkIfUserExist = await User.findOne({ where: { email } });
 
         if(checkIfUserExist){
             res.json({message: "Usuário já existe"});

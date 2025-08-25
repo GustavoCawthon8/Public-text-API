@@ -13,6 +13,7 @@ const router = require("./routes/AuthRouter");
 
 //middleware
 app.use(cors());
+app.use(express.json());
 app.use(router)
 
 // rodando o servidor
