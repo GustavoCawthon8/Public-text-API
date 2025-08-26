@@ -12,7 +12,7 @@ module.exports = class AuthController{
 
         const passwordMatch = await bcrypt.compare(password, user.password);
         if(!passwordMatch){
-          return  res.status(401).json({message: "Senha incorreta"});
+          return res.status(401).json({message: "Senha incorreta"});
         }
 
         req.session.user = user.id;

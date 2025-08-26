@@ -14,7 +14,6 @@ const router = require("./routes/AuthRouter");
 //middleware
 app.use(cors());
 app.use(express.json());
-app.use(router);
 
 app.use(session({
   secret: "publictext_secret",
@@ -29,7 +28,10 @@ app.use(session({
 // rodando o servidor
 app.get('/', (req, res)=>{
   res.send('API Rodando')
-})
+});
+
+//Routes
+app.use(router);
 
 database.sync().then(()=>{
   app.listen(PORT, ()=>{
