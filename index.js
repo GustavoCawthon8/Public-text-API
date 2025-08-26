@@ -33,6 +33,7 @@ app.get('/', (req, res)=>{
 //Routes
 app.use(router);
 
+
 database.sync().then(()=>{
   app.listen(PORT, ()=>{
     console.log(chalk.blue(`Servidor rodando em https://localhost:${PORT}`))

@@ -14,6 +14,7 @@ module.exports = class AuthController{
         if(!passwordMatch){
           return res.status(401).json({message: "Senha incorreta"});
         }
+        
 
         req.session.user = user.id;
         req.session.save(()=>{
