@@ -1,6 +1,5 @@
 const database = require("../config/db");
 const {DataTypes} = require("sequelize");
-const User = require("./User");
 
 const Text = database.define("Texts", {
     text:{
@@ -9,7 +8,5 @@ const Text = database.define("Texts", {
     }
 });
 
-Text.belongsTo(User);
-User.hasMany(Text);
 
 module.exports = Text

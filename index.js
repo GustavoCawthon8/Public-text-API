@@ -9,7 +9,6 @@ const app = express();
 
 //modulos
 const database = require("./config/db");
-const authRouter = require("./routes/AuthRouter");
 const textRouter = require("./routes/TextRouter");
 
 //middleware
@@ -34,10 +33,9 @@ app.get('/', (req, res)=>{
 });
 
 //Routes
-app.use("/auth", authRouter);
 app.use("/text", textRouter);
 
-
+//iniciando database
 database.sync({force: false}).then(()=>{
   app.listen(PORT, ()=>{
     console.log(chalk.blue(`Servidor rodando em https://localhost:${PORT}`))
