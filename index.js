@@ -9,7 +9,8 @@ const app = express();
 
 //modulos
 const database = require("./config/db");
-const router = require("./routes/AuthRouter");
+const authRouter = require("./routes/AuthRouter");
+const textRouter = require("./routes/TextRouter");
 
 //middleware
 app.use(cors());
@@ -23,7 +24,9 @@ app.use(session({
     secure: false,
     maxAge: 1000 * 60 *60
   }
-}))
+}));
+
+app.use(express.urlencoded({extended: true}));
 
 // rodando o servidor
 app.get('/', (req, res)=>{
@@ -31,10 +34,11 @@ app.get('/', (req, res)=>{
 });
 
 //Routes
-app.use(router);
+app.use("/auth", authRouter);
+app.use("/text", textRouter);
 
 
-database.sync().then(()=>{
+database.sync({force: false}).then(()=>{
   app.listen(PORT, ()=>{
     console.log(chalk.blue(`Servidor rodando em https://localhost:${PORT}`))
   })
